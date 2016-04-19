@@ -52,7 +52,7 @@ if __name__ == "__main__":
   mqttkey = getKey(protocol, model, size, type)
   protocol = "xmpp"
   xmppkey = getKey(protocol, model, size, type)
-  protocol = "coap"
+  protocol = "coap0"
   coapkey = getKey(protocol, model, size, type)
   thruputs = []
   if amqpkey in data:
@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
   barWidth = .35
   plt.bar(index, thruputs, barWidth)
-  plt.xticks(index + (barWidth/2), ('AMQP', 'MQTT QoS=0', 'XMPP', 'CoAP'))
+  plt.xticks(index + (barWidth/2), ('AMQP', 'MQTT QoS=0', 'XMPP', 'CoAP QoS=0'))
   plt.xlabel('Protocol')
   plt.ylabel('Throughput (MB/s)')
 

@@ -29,11 +29,11 @@ if __name__ == "__main__":
   amqp = plotLine("amqp", model, size, type)
   mqtt = plotLine("mqtt0", model, size, type)
   xmpp = plotLine("xmpp", model, size, type)
-  coap = plotLine("coap", model, size, type)
+  coap = plotLine("coap0", model, size, type)
   
   plt.axis([0, 180, 0, 1.0])
   if coap != None:
-    plt.legend([amqp, mqtt, xmpp, coap], ['AMQP', 'MQTT QoS=0', 'XMPP', 'CoAP'])
+    plt.legend([amqp, mqtt, xmpp, coap], ['AMQP', 'MQTT QoS=0', 'XMPP', 'CoAP QoS=0'])
   else:
     plt.legend([amqp, mqtt, xmpp], ['AMQP', 'MQTT QoS=0', 'XMPP'])
   plt.xlabel('Time (Seconds)')
