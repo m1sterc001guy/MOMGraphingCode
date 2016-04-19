@@ -1,0 +1,15 @@
+All Programs are executed as follows (except for plotProtocolThroughputs.py):
+
+python <name of program> <model> <message size> <type>
+
+where model can be: fast, onoff, tele
+message size can be: 1000, 100000, 1000000
+and type can either be: normal, lossy
+
+Note: lossy is not implemented yet. mqtt1 and mqtt2 were only run on the fast model.
+
+plotProtocolThroughputs.py is executed by
+python plotProtocolThroughputs.py <protocol> <model> <type>
+
+model and type are the same as above. Protocol is either amqp, mqtt0, mqtt1, mqtt2, xmpp, coap0, coap1
+The numbers after the protocol indicate the QoS for that experiment.
