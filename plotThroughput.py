@@ -2,13 +2,13 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 
-def getKey(protocol, model, size, type):
+def getKey(protocol, model, size, traffictype):
   kbSize = int(size) / 1000
   if kbSize < 1000:
-    key = protocol.upper() + "_" + model.upper() + "_" + str(kbSize) + "KB_" + type.upper()
+    key = protocol.upper() + "_" + model.upper() + "_" + str(kbSize) + "KB_" + traffictype.upper()
   else:
     mbSize = kbSize / 1000
-    key = protocol.upper() + "_" + model.upper() + "_" + str(mbSize) + "MB_" + type.upper()
+    key = protocol.upper() + "_" + model.upper() + "_" + str(mbSize) + "MB_" + traffictype.upper()
   return key
 
 if __name__ == "__main__":
@@ -44,16 +44,16 @@ if __name__ == "__main__":
 
   model = sys.argv[1]
   size = sys.argv[2]
-  type = sys.argv[3]
+  traffictype = sys.argv[3]
 
   protocol = "amqp"
-  amqpkey = getKey(protocol, model, size, type)
+  amqpkey = getKey(protocol, model, size, traffictype)
   protocol = "mqtt0"
-  mqttkey = getKey(protocol, model, size, type)
+  mqttkey = getKey(protocol, model, size, traffictype)
   protocol = "xmpp"
-  xmppkey = getKey(protocol, model, size, type)
+  xmppkey = getKey(protocol, model, size, traffictype)
   protocol = "coap0"
-  coapkey = getKey(protocol, model, size, type)
+  coapkey = getKey(protocol, model, size, traffictype)
   thruputs = []
   if amqpkey in data:
     thruputs.append(data[amqpkey]["throughputTotal"])

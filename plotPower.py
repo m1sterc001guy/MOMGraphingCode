@@ -2,13 +2,13 @@ import sys
 import matplotlib.pyplot as plt
 import math
 
-def plotLine(protocol, model, size, type, data):
+def plotLine(protocol, model, size, traffictype, data):
   kbSize = int(size) / 1000
   if kbSize < 1000:
-    key = protocol.upper() + "_" + model.upper() + "_" + str(kbSize) + "KB_" + type.upper()
+    key = protocol.upper() + "_" + model.upper() + "_" + str(kbSize) + "KB_" + traffictype.upper()
   else:
     mbSize = kbSize / 1000
-    key = protocol.upper() + "_" + model.upper() + "_" + str(mbSize) + "MB_" + type.upper()
+    key = protocol.upper() + "_" + model.upper() + "_" + str(mbSize) + "MB_" + traffictype.upper()
 
   if key in data:
     axisData = data[key]
@@ -48,12 +48,12 @@ if __name__ == "__main__":
 
   model = sys.argv[1]
   size = sys.argv[2]
-  type = sys.argv[3]
+  traffictype = sys.argv[3]
   
-  amqp = plotLine("amqp", model, size, type, data)
-  mqtt = plotLine("mqtt0", model, size, type, data)
-  xmpp = plotLine("xmpp", model, size, type, data)
-  coap = plotLine("coap0", model, size, type, data)
+  amqp = plotLine("amqp", model, size, traffictype, data)
+  mqtt = plotLine("mqtt0", model, size, traffictype, data)
+  xmpp = plotLine("xmpp", model, size, traffictype, data)
+  coap = plotLine("coap0", model, size, traffictype, data)
 
   if coap != None:
     plt.legend([amqp, mqtt, xmpp, coap], ['AMQP', 'MQTT QoS=0', 'XMPP', 'CoAP QoS=0'])

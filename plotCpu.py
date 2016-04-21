@@ -1,8 +1,8 @@
 import sys
 import matplotlib.pyplot as plt
 
-def plotLine(protocol, model, size, type):
-  filename = protocol + "_cpu_pub_" + model + "_" + size  + "_" + type
+def plotLine(protocol, model, size, traffictype):
+  filename = protocol + "_cpu_pub_" + model + "_" + size  + "_" + traffictype
   try:
     with open('data/' + filename) as f:
       content = f.readlines()
@@ -25,11 +25,11 @@ if __name__ == "__main__":
 
   model = sys.argv[1]
   size = sys.argv[2]
-  type = sys.argv[3]
-  amqp = plotLine("amqp", model, size, type)
-  mqtt = plotLine("mqtt0", model, size, type)
-  xmpp = plotLine("xmpp", model, size, type)
-  coap = plotLine("coap0", model, size, type)
+  traffictype = sys.argv[3]
+  amqp = plotLine("amqp", model, size, traffictype)
+  mqtt = plotLine("mqtt0", model, size, traffictype)
+  xmpp = plotLine("xmpp", model, size, traffictype)
+  coap = plotLine("coap0", model, size, traffictype)
   
   plt.axis([0, 180, 0, 1.0])
   if coap != None:

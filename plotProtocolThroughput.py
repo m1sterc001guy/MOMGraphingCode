@@ -2,13 +2,13 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 
-def getKey(protocol, model, size, type):
+def getKey(protocol, model, size, traffictype):
   kbSize = int(size) / 1000
   if kbSize < 1000:
-    key = protocol.upper() + "_" + model.upper() + "_" + str(kbSize) + "KB_" + type.upper()
+    key = protocol.upper() + "_" + model.upper() + "_" + str(kbSize) + "KB_" + traffictype.upper()
   else:
     mbSize = kbSize / 1000
-    key = protocol.upper() + "_" + model.upper() + "_" + str(mbSize) + "MB_" + type.upper()
+    key = protocol.upper() + "_" + model.upper() + "_" + str(mbSize) + "MB_" + traffictype.upper()
   return key
 
 if __name__ == "__main__":
@@ -44,11 +44,11 @@ if __name__ == "__main__":
 
   protocol = sys.argv[1]
   model = sys.argv[2]
-  type = sys.argv[3]
+  traffictype = sys.argv[3]
 
-  onekbkey = getKey(protocol, model, 1000, type)
-  hundredkbkey = getKey(protocol, model, 100000, type)
-  onembkey = getKey(protocol, model, 1000000, type)
+  onekbkey = getKey(protocol, model, 1000, traffictype)
+  hundredkbkey = getKey(protocol, model, 100000, traffictype)
+  onembkey = getKey(protocol, model, 1000000, traffictype)
   thruputs = []
   if onekbkey in data:
     thruputs.append(data[onekbkey]["throughputTotal"])
